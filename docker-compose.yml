@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  yuanbao-api:
+    build: .
+    container_name: yuanbao-free-api
+    ports:
+      - "51011:8000"   # 如果你的项目监听的不是8000端口，请修改
+    environment:
+      # 如有环境变量需求在这里添加
+      # EXAMPLE_ENV: "value"
+    volumes:
+      - .:/app
+    restart: unless-stopped
