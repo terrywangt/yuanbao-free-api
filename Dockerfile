@@ -1,4 +1,4 @@
-FROM python:3.10-slim  # 默认从 Docker Hub 拉取
+FROM python:3.10-slim
 
 WORKDIR /app
 
