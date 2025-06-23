@@ -38,8 +38,7 @@ async def upload_file(
             request.agent_id = agent_id_from_header
         if hy_user:
             request.hy_user = hy_user
-        if hy_token:
-            request.hy_user = hy_token
+
         # 如果解析出 hy_user 和 hy_token，则注入 headers
         if hy_user and hy_token:
             headers["hy_user"] = hy_user
