@@ -12,7 +12,7 @@ def parse_authorization_header(auth_header: str | None):
     except Exception as e:
         logging.warning(f"Failed to parse Authorization header: {e}")
     return None, None, None
-def generate_headers(request: dict, token: str) -> Dict[str, str]:
+def generate_headers(request: dict, authorization: str) -> Dict[str, str]:
     # 尝试解析 Authorization 头
     agent_id_from_header, hy_user, hy_token = parse_authorization_header(authorization)
     if not agent_id_from_header:
