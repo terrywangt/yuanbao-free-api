@@ -33,7 +33,13 @@ async def upload_file(
     try:
         # 尝试解析 Authorization 头
         agent_id_from_header, hy_user, hy_token = parse_authorization_header(authorization)
-
+                # 如果 header 中有，就覆盖 request.agent_id
+        if agent_id_from_header:
+            request.agent_id = agent_id_from_header
+        if hy_user:
+            request.hy_user = hy_user
+        if hy_token:
+            request.hy_user = hy_token
         # 如果解析出 hy_user 和 hy_token，则注入 headers
         if hy_user and hy_token:
             headers["hy_user"] = hy_user
