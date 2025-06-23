@@ -13,6 +13,7 @@ def parse_authorization_header(auth_header: str | None):
         logging.warning(f"Failed to parse Authorization header: {e}")
     return None, None, None
 def generate_headers(request: dict, authorization: str) -> Dict[str, str]:
+    hy_source='web'
     # 尝试解析 Authorization 头
     agent_id_from_header, hy_user, hy_token = parse_authorization_header(authorization)
     if not agent_id_from_header:
@@ -22,7 +23,7 @@ def generate_headers(request: dict, authorization: str) -> Dict[str, str]:
     if not hy_token:
         hy_token=request['hy_token']
     return {
-        "Cookie": f"hy_source={request['hy_source']}; hy_user={hy_user}; hy_token={hy_token}",
+        "Cookie": f"hy_source={hy_source}; hy_user={hy_user}; hy_token={hy_token}",
         "Origin": "https://yuanbao.tencent.com",
         "Referer": f"https://yuanbao.tencent.com/chat/{agent_id_from_header}",
         "X-Agentid":agent_id_from_header ,
