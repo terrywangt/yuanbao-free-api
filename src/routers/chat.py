@@ -41,8 +41,7 @@ async def chat_completions(
             request.agent_id = agent_id_from_header
         if hy_user:
             request.hy_user = hy_user
-        if hy_token:
-            request.hy_user = hy_token
+
 
         # 为后续调用准备 headers
         if hy_user and hy_token:
